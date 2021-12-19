@@ -12,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -28,18 +27,26 @@ public class GameMain extends Application implements Initializable {
     @FXML
     private ImageView Title;
     @FXML
-    private ImageView Hero;
+    private ImageView HeroChar;
     @FXML
     private ImageView Island1;
     @FXML
     private ImageView Island2;
+    @FXML
+    private ImageView Island3;
+    @FXML
+    private ImageView Island4;
+    @FXML
+    private ImageView Island5;
+    @FXML
+    private ImageView Island6;
+    @FXML
+    private ImageView Uprock;
 
     @FXML
     private ImageView GameBackground;
     @FXML
     private Button button;
-
-
 
 
 
@@ -57,10 +64,10 @@ public class GameMain extends Application implements Initializable {
     private void introTransition(double out) {
         //Duration to be 1500
         //Setting Duration to 1 for fast Testing
-        runTranslateTransition(Island1, 0, out * 200, 1500).play();
+        runTranslateTransition(Island1, 0, out* 200, 1500).play();
         runTranslateTransition(Island2, 0, out * 175, 1500).play();
         runTranslateTransition(Title, 0, out * -150, 1500).play();
-        JumpHero(Hero);
+        JumpHero(HeroChar);
         /*
         if (out == 1) {
             CommonAnimation.fade(startButton, 0).play();
@@ -80,9 +87,29 @@ public class GameMain extends Application implements Initializable {
 
         new SequentialTransition(CommonAnimation.delay(1000),intro).play();
     }
+    int XCoord = 0;
+    int taps = 0;
+    double out2;
     public void MoveHeroForward(ActionEvent actionEvent){
-        MoveHero(Hero);
+        MoveHero(HeroChar);
+        XCoord+=100;
+        taps++;
+
+        XcoordPrint();
+        runTranslateTransition(Island1,-200,0,1500).play();
+        runTranslateTransition(Island2,-200,0,1500).play();
+        runTranslateTransition(Island3,-250,0,1500).play();
+        runTranslateTransition(Island4,-200,0,1500).play();
+        runTranslateTransition(Island5,-200,0,1500).play();
+        runTranslateTransition(Uprock,-200,0,1500).play();
+
+
     }
+    public void XcoordPrint(){
+        System.out.println(XCoord);
+    }
+
+
 
 
     public static void main(String[] args) {

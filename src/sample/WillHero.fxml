@@ -12,7 +12,7 @@
             <Image url="@../Assets/GameBackground.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Title" fitHeight="83.0" fitWidth="169.0" layoutX="282.0" layoutY="-125.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Title" fitHeight="83.0" fitWidth="169.0" layoutX="282.0" layoutY="-135.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/Title.jpg" />
          </image>
@@ -22,16 +22,36 @@
             <Image url="@../Assets/island_paint3d.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Island2" fitHeight="150.0" fitWidth="200.0" layoutX="384.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Island2" fitHeight="150.0" fitWidth="200.0" layoutX="401.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/island_paint3d_2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Hero" fitHeight="29.0" fitWidth="31.0" layoutX="214.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="HeroChar" fitHeight="29.0" fitWidth="31.0" layoutX="214.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/Hero.png" />
          </image>
       </ImageView>
-      <Button fx:id="button" layoutX="454.0" layoutY="87.0" mnemonicParsing="false" onAction="#MoveHeroForward" text="Button" />
+      <Button fx:id="button" layoutX="517.0" layoutY="40.0" mnemonicParsing="false" onAction="#MoveHeroForward" text="Button" />
+      <ImageView fx:id="Island4" fitHeight="150.0" fitWidth="200.0" layoutX="999.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/island_paint3d_2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Island3" fitHeight="150.0" fitWidth="200.0" layoutX="727.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/Island3.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Uprock" fitHeight="91.0" fitWidth="112.0" layoutX="939.0" layoutY="-45.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/UpHangRock.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Island5" fitHeight="150.0" fitWidth="200.0" layoutX="1266.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/Rock.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

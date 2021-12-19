@@ -6,8 +6,6 @@ import javafx.scene.image.ImageView;
 import static sample.CommonAnimation.runTranslateTransition;
 
 public class Hero extends GameObjects{
-
-
     Hero(float x,float y){
         super(x,y);
     }

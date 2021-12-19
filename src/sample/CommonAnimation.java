@@ -19,9 +19,9 @@ public class CommonAnimation {
     public static TranslateTransition JumpHero(Node n){
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(n);
-        translate.setDuration(Duration.millis(1000));
+        translate.setDuration(Duration.millis(650));
         translate.setCycleCount(TranslateTransition.INDEFINITE);
-        translate.setByY(18);
+        translate.setByY(25);
         translate.setAutoReverse(true);
         translate.play();
         return translate;
@@ -30,7 +30,7 @@ public class CommonAnimation {
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(n);
         translate.setDuration(Duration.millis(1000));
-        translate.setByX(100);
+        translate.setByX(60);
         translate.setByY(n.getScaleY());
         translate.setAutoReverse(false);
         translate.play();
