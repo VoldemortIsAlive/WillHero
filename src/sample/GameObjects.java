@@ -7,7 +7,8 @@ public abstract class GameObjects implements Serializable {
     private String color;
 
     public GameObjects(float x,float y){
-
+        position[0] = x;
+        position[1] = y;
     }
     public abstract boolean OnCollide(GameObjects Hero);
 }

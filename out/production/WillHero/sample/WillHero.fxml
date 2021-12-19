@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="609.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameMain">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="284.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameMain">
    <children>
-      <ImageView fitHeight="506.0" fitWidth="751.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="GameBackground" fitHeight="310.0" fitWidth="703.0" layoutX="-41.0" layoutY="-1.0" onMouseClicked="#MoveHeroForward" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/GameBackground.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Title" fitHeight="150.0" fitWidth="200.0" layoutX="386.0" layoutY="-138.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Title" fitHeight="83.0" fitWidth="169.0" layoutX="282.0" layoutY="-125.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/Title.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="Island" fitHeight="150.0" fitWidth="200.0" layoutX="80.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Island1" fitHeight="150.0" fitWidth="200.0" layoutX="102.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/island_paint3d.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="Island2" fitHeight="150.0" fitWidth="200.0" layoutX="384.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/island_paint3d_2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Hero" fitHeight="29.0" fitWidth="31.0" layoutX="214.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/Hero.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="button" layoutX="454.0" layoutY="87.0" mnemonicParsing="false" onAction="#MoveHeroForward" text="Button" />
    </children>
 </AnchorPane>
