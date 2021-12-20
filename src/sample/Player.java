@@ -12,7 +12,7 @@ public class Player {
     }
 
 
-    public static Player getInstance() {
+    public synchronized static Player getPlayer() {
         if(player == null) {
             player = new Player();
         }
