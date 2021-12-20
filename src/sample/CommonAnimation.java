@@ -21,7 +21,7 @@ public class CommonAnimation {
         translate.setNode(n);
         translate.setDuration(Duration.millis(650));
         translate.setCycleCount(TranslateTransition.INDEFINITE);
-        translate.setByY(25);
+        translate.setByY(30);
         translate.setAutoReverse(true);
         translate.play();
         return translate;

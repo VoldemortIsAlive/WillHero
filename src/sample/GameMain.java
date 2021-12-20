@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -24,6 +25,8 @@ import static sample.CommonAnimation.MoveHero;
 
 public class GameMain extends Application implements Initializable {
 
+
+    Hero hero = new Hero(0,0);
     @FXML
     private ImageView Title;
     @FXML
@@ -42,6 +45,8 @@ public class GameMain extends Application implements Initializable {
     private ImageView Island6;
     @FXML
     private ImageView Uprock;
+    @FXML
+    private ImageView Cloud;
 
     @FXML
     private ImageView GameBackground;
@@ -51,6 +56,9 @@ public class GameMain extends Application implements Initializable {
 
 
 
+    public void SetCoord(Hero hero){
+        hero.X_coord = HeroChar.getX();
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -89,18 +97,25 @@ public class GameMain extends Application implements Initializable {
     }
     int XCoord = 0;
     int taps = 0;
-    double out2;
+
+
+
     public void MoveHeroForward(ActionEvent actionEvent){
         MoveHero(HeroChar);
-        XCoord+=100;
+        SetCoord(hero);
         taps++;
+        if(taps==1){
+            runTranslateTransition(Title, 0, -150, 1500).play();
+        }
 
         XcoordPrint();
         runTranslateTransition(Island1,-200,0,1500).play();
         runTranslateTransition(Island2,-200,0,1500).play();
-        runTranslateTransition(Island3,-250,0,1500).play();
+        runTranslateTransition(Island3,-200,0,1500).play();
         runTranslateTransition(Island4,-200,0,1500).play();
         runTranslateTransition(Island5,-200,0,1500).play();
+        runTranslateTransition(Island6,-200,0,1500).play();
+        runTranslateTransition(Cloud,-200,0,1500).play();
         runTranslateTransition(Uprock,-200,0,1500).play();
 
 
@@ -117,5 +132,22 @@ public class GameMain extends Application implements Initializable {
     }
 
 
+    public void Move(MouseEvent mouseEvent) {
+        MoveHero(HeroChar);
 
+        taps++;
+        if(taps==1){
+            runTranslateTransition(Title, 0, -150, 1500).play();
+        }
+
+        XcoordPrint();
+        runTranslateTransition(Island1,-200,0,1500).play();
+        runTranslateTransition(Island2,-200,0,1500).play();
+        runTranslateTransition(Island3,-200,0,1500).play();
+        runTranslateTransition(Island4,-200,0,1500).play();
+        runTranslateTransition(Island5,-200,0,1500).play();
+        runTranslateTransition(Island6,-200,0,1500).play();
+        runTranslateTransition(Cloud,-200,0,1500).play();
+        runTranslateTransition(Uprock,-200,0,1500).play();
+    }
 }

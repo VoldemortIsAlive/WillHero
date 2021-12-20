@@ -1,26 +1,48 @@
 package sample;
-
-import java.io.Serializable;
-
-public class Player implements Serializable {
+public class Player {
+    //Design pattern: SINGLETON
+    private static Player player = null;
     private String name;
-    private int Score;
-    private int GamesPlayed;
-    private int highScore;
+    private int CoinsPossessed;
+    private int highscore;
 
-    Player(){
-        this.name = name;
-        this.Score = Score;
-        this.GamesPlayed = GamesPlayed;
-        this.highScore = highScore;
+    private Player() {
+        CoinsPossessed = 0;
+        highscore = 0;
+    }
+
+
+    public static Player getInstance() {
+        if(player == null) {
+            player = new Player();
+        }
+        return player;
+    }
+    public int getHighscore() {
+        return highscore;
+    }
+
+    public void setHighscore(int highscore) {
+        this.highscore = highscore;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
-    public void setCurrentScore(int CurrentScore) {
-        this.Score = CurrentScore;
-        highScore=Math.max(highScore,Score);
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCoinsPossessed() {
+        return CoinsPossessed;
+    }
+
+    public void addCoins(int Coins) {
+        this.CoinsPossessed += Coins;
+    }
+
+    public void SubtractCoins(int Coins) {
+        this.CoinsPossessed -= Coins;   // PLAYER REVIVED
     }
 }
