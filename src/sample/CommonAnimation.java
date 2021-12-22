@@ -16,12 +16,24 @@ public class CommonAnimation {
         load.setDuration(Duration.millis(duration));
         return load;
     }
-    public static TranslateTransition JumpHero(Node n){
+    public static TranslateTransition JumpHero(Node n,boolean bool){
+        TranslateTransition translate = new TranslateTransition();
+        if(bool == true){
+            translate.setNode(n);
+            translate.setDuration(Duration.millis(650));
+            translate.setCycleCount(TranslateTransition.INDEFINITE);
+            translate.setByY(30);
+            translate.setAutoReverse(true);
+            translate.play();
+        }
+        return translate;
+    }
+    public static TranslateTransition JumpOrc(Node n){
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(n);
-        translate.setDuration(Duration.millis(650));
+        translate.setDuration(Duration.millis(500));
         translate.setCycleCount(TranslateTransition.INDEFINITE);
-        translate.setByY(30);
+        translate.setByY(20);
         translate.setAutoReverse(true);
         translate.play();
         return translate;
@@ -30,12 +42,13 @@ public class CommonAnimation {
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(n);
         translate.setDuration(Duration.millis(1000));
-        translate.setByX(60);
+        translate.setByX(10);
         translate.setByY(n.getScaleY());
         translate.setAutoReverse(false);
         translate.play();
         return translate;
     }
+
 
     public static FadeTransition fade(Node n, double fadeval, double time) {
         //Fade Duration Must be 1500

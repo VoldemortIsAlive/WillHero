@@ -3,10 +3,12 @@ public class Player {
     //Design pattern: SINGLETON
     private static Player player = null;
     private String name;
+    private int taps;
     private int CoinsPossessed;
     private int highscore;
 
     private Player() {
+        taps = 0;
         CoinsPossessed = 0;
         highscore = 0;
     }
@@ -44,5 +46,9 @@ public class Player {
 
     public void SubtractCoins(int Coins) {
         this.CoinsPossessed -= Coins;   // PLAYER REVIVED
+    }
+
+    public int getTaps(){
+        return taps;
     }
 }

@@ -1,14 +1,26 @@
 package sample;
+
+import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+
 public class Hero extends GameObjects{
-    double X_coord = 0;
-    double Y_coord = 0;
-    Hero(float x,float y){
+    @FXML
+    private ImageView HeroPhoto;
+    Hero(double x,double y){
         super(x,y);
     }
 
-
-    public boolean OnCollide(GameObjects Hero){
-        return false;
+    @Override
+    public void Collison(Hero h) {
     }
+
+    public void setHeroPhoto(ImageView heroPhoto) {
+        HeroPhoto = heroPhoto;
+    }
+
+    public ImageView getHeroPhoto() {
+        return HeroPhoto;
+    }
+
 
 }
