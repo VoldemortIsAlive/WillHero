@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="339.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <ImageView fx:id="GameBackground" fitHeight="339.0" fitWidth="680.0" layoutY="-1.0" onMouseClicked="#Move" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="GameBackground" fitHeight="340.0" fitWidth="680.0" layoutY="-1.0" onMouseClicked="#Move" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/GameBackground.png" />
          </image>

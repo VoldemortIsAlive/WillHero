@@ -42,7 +42,7 @@ public class CommonAnimation {
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(n);
         translate.setDuration(Duration.millis(1000));
-        translate.setByX(10);
+        translate.setByX(1);
         translate.setByY(n.getScaleY());
         translate.setAutoReverse(false);
         translate.play();
@@ -51,8 +51,6 @@ public class CommonAnimation {
 
 
     public static FadeTransition fade(Node n, double fadeval, double time) {
-        //Fade Duration Must be 1500
-        //Setting Fades to 1 for Fast Testing
         FadeTransition fadeload = new FadeTransition();
         fadeload.setDuration(Duration.millis(time));
         fadeload.setToValue(fadeval);
