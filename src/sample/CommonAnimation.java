@@ -5,6 +5,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class CommonAnimation {
@@ -19,10 +20,11 @@ public class CommonAnimation {
     public static TranslateTransition JumpHero(Node n,boolean bool){
         TranslateTransition translate = new TranslateTransition();
         if(bool == true){
+            //750
             translate.setNode(n);
-            translate.setDuration(Duration.millis(650));
+            translate.setDuration(Duration.millis(850));
             translate.setCycleCount(TranslateTransition.INDEFINITE);
-            translate.setByY(30);
+            translate.setByY(38);
             translate.setAutoReverse(true);
             translate.play();
         }
@@ -42,22 +44,23 @@ public class CommonAnimation {
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(n);
         translate.setDuration(Duration.millis(1000));
-        translate.setByX(1);
+        translate.setByX(0);
         translate.setByY(n.getScaleY());
         translate.setAutoReverse(false);
         translate.play();
         return translate;
     }
-
-
-    public static FadeTransition fade(Node n, double fadeval, double time) {
-        FadeTransition fadeload = new FadeTransition();
-        fadeload.setDuration(Duration.millis(time));
-        fadeload.setToValue(fadeval);
-        fadeload.setNode(n);
-        if(fadeval==0)n.setDisable(true);
-        else if(fadeval==1)n.setDisable(false);
-        return fadeload;
+    public static void fadeOut(ImageView img){
+        FadeTransition fader = new FadeTransition(Duration.millis(1) , img);
+        fader.setFromValue(1);
+        fader.setToValue(0);
+        fader.play();
+    }
+    public static FadeTransition fadeIn(ImageView img){
+        FadeTransition fader = new FadeTransition(Duration.millis(1) , img);
+        fader.setFromValue(0);
+        fader.setToValue(1);
+        return fader;
     }
 
     public static Timeline delay(double time)

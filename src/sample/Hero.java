@@ -22,5 +22,4 @@ public class Hero extends GameObjects{
         return HeroPhoto;
     }
 
-
 }

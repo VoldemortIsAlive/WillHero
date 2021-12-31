@@ -4,12 +4,13 @@ public class Player {
     private static Player player = null;
     private String name;
     private int taps;
-    private int CoinsPossessed;
+    private int CoinCnt;
     private int highscore;
+    private boolean HasKnife = false;
 
     private Player() {
         taps = 0;
-        CoinsPossessed = 0;
+        CoinCnt = 0;
         highscore = 0;
     }
 
@@ -19,6 +20,12 @@ public class Player {
             player = new Player();
         }
         return player;
+    }
+    public void SetKnife(){
+        HasKnife = true;
+    }
+    public boolean GetKnife(){
+        return HasKnife;
     }
     public int getHighscore() {
         return highscore;
@@ -37,15 +44,15 @@ public class Player {
     }
 
     public int getCoinsPossessed() {
-        return CoinsPossessed;
+        return CoinCnt;
     }
 
     public void addCoins(int Coins) {
-        this.CoinsPossessed += Coins;
+        this.CoinCnt += Coins;
     }
 
     public void SubtractCoins(int Coins) {
-        this.CoinsPossessed -= Coins;   // PLAYER REVIVED
+        this.CoinCnt -= Coins;   // PLAYER REVIVED
     }
 
     public int getTaps(){

@@ -3,7 +3,9 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 
-public class Islands extends GameObjects {
+import java.util.ArrayList;
+
+public class Islands extends GameObjects{
     @FXML
     private ImageView Island;
 
@@ -41,4 +43,10 @@ public class Islands extends GameObjects {
     public ImageView getIsland() {
         return Island;
     }
+
+    public void Add(ArrayList<ImageView> img){
+        img.add(Island);
+    }
+
+
 }

@@ -4,7 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 
-public class Orcs extends GameObjects{
+public class Orcs extends GameObjects {
     @FXML
     private ImageView OrcPhoto;
 
