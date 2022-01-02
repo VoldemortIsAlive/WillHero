@@ -124,17 +124,17 @@
             <Image url="@../Assets/ReIsle1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Island51" fitHeight="108.0" fitWidth="257.0" layoutX="3200.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Island51" fitHeight="108.0" fitWidth="257.0" layoutX="3341.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/ReIsle2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Island61" fitHeight="150.0" fitWidth="200.0" layoutX="3538.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Island61" fitHeight="150.0" fitWidth="200.0" layoutX="3647.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/ReIsle1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Island71" fitHeight="108.0" fitWidth="257.0" layoutX="3837.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Island71" fitHeight="108.0" fitWidth="257.0" layoutX="3909.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/ReIsle2.png" />
          </image>
@@ -149,9 +149,24 @@
             <Image url="@../Assets/Orc1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="24.0" fitWidth="32.0" layoutX="8.0" layoutY="8.0" onMouseClicked="#SwitchToSettings" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="24.0" fitWidth="32.0" layoutX="7.0" layoutY="11.0" onMouseClicked="#SwitchToSettings" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/SettingIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Pause" fitHeight="24.0" fitWidth="32.0" layoutX="44.0" layoutY="11.0" onMouseClicked="#Pause" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/PauseIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="PausedGame" fitHeight="42.0" fitWidth="296.0" layoutX="219.0" layoutY="18.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/GamePausedTxt.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ResumeIcon" fitHeight="42.0" fitWidth="32.0" layoutX="350.0" layoutY="103.0" onMouseClicked="#Resume" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/ResumeIcon.png" />
          </image>
       </ImageView>
    </children>

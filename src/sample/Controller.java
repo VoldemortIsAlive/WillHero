@@ -23,6 +23,7 @@ import static sample.CommonAnimation.*;
 import static sample.CommonAnimation.runTranslateTransition;
 
 public class Controller implements Initializable,Runnable, Serializable {
+
     @FXML
     private ImageView Title;
     @FXML
@@ -67,6 +68,10 @@ public class Controller implements Initializable,Runnable, Serializable {
     private ImageView C4;
     @FXML
     private ImageView C5;
+    @FXML
+    private ImageView PausedGame;
+    @FXML
+    private ImageView ResumeIcon;
 
     @FXML
     private ImageView Knife;
@@ -76,6 +81,8 @@ public class Controller implements Initializable,Runnable, Serializable {
     private ImageView StaticBomb;
     @FXML
     private ImageView Bomb;
+    @FXML
+    private ImageView Pause;
 
     @FXML
     private ImageView Uprock;
@@ -189,7 +196,10 @@ public class Controller implements Initializable,Runnable, Serializable {
         i7.Add(Islands);
         i8.Add(Islands);
         i31.Add(Islands);
-
+        //i41.Add(Islands);
+//        i51.Add(Islands);
+//        i61.Add(Islands);
+//        i71.Add(Islands);
         Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
             introTransition(-1);
         }));
@@ -216,7 +226,8 @@ public class Controller implements Initializable,Runnable, Serializable {
                     for(int j=0;j<Islands.size();j++){
                         if(OrcList.get(i).getBoundsInParent().getCenterX()>Islands.get(j).getBoundsInParent().getMaxX() && OrcList.get(i).getBoundsInParent().getCenterX()<Islands.get(j+1).getBoundsInParent().getMinX()){
                             System.out.println("yes");
-                            runTranslateTransition(Orc,0,100,600).play();
+                            runTranslateTransition(OrcList.get(i),0,100,800).play();
+                            FallOrc(OrcList.get(i));
 
                         }
                     }
@@ -289,6 +300,10 @@ public class Controller implements Initializable,Runnable, Serializable {
             for(int i=0;i<Islands.size();i++){
                 //centreY<=165
                 //System.out.println(centreY);
+//                if(Islands.get(i+1).getBoundsInParent().intersects(Uprock.getBoundsInParent())){
+//                    System.out.println("Moved Island!");
+////                    Islands.get(i).setX(300);
+//                }
                 if(center>Islands.get(i).getBoundsInParent().getMaxX() && center<Islands.get(i+1).getBoundsInParent().getMinX()
                         && !t2.isAlive() && centreY<=153.5625){
                     runTranslateTransition(HeroChar,0,750,1500).play();
@@ -298,6 +313,7 @@ public class Controller implements Initializable,Runnable, Serializable {
                     PathAnimateStraight(HeroChar).play();
                     //System.out.println("just touched");
                 }
+
             }
         }
     };
@@ -365,12 +381,25 @@ public class Controller implements Initializable,Runnable, Serializable {
     private Stage s;
     private Parent p;
     private Scene sc;
+
+    public void FallOrc(ImageView img){
+        runTranslateTransition(img,-200,250,800).play();
+    }
+
     public void SwitchToSettings(MouseEvent mouseEvent) throws IOException {
         this.s = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
         Parent root = (Parent) FXMLLoader.load(this.getClass().getResource("Settings.fxml"));
         this.s.setTitle("Settings Page");
-        this.s.setScene(new Scene(root, 600,300));
+        this.s.setScene(new Scene(root, 500,300));
         this.s.show();
+    }
+    public void Pause(MouseEvent mouseEvent) throws IOException{
+        PausedGame.setOpacity(1);
+        ResumeIcon.setOpacity(1);
+    }
+    public void Resume(MouseEvent mouseEvent) throws IOException{
+        PausedGame.setOpacity(0);
+        ResumeIcon.setOpacity(0);
     }
 
     @Override
