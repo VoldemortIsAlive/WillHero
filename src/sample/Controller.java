@@ -8,16 +8,20 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import static sample.CommonAnimation.*;
 import static sample.CommonAnimation.runTranslateTransition;
@@ -59,6 +63,14 @@ public class Controller implements Initializable,Runnable, Serializable {
     @FXML
     private ImageView Island32;
     @FXML
+    private Label txt;
+    @FXML
+    private Rectangle rect;
+    @FXML
+    private Button respawn;
+    @FXML
+    private Button norespawn;
+    @FXML
     private ImageView C1;
     @FXML
     private ImageView C2;
@@ -74,6 +86,8 @@ public class Controller implements Initializable,Runnable, Serializable {
     private ImageView C7;
     @FXML
     private ImageView C8;
+    @FXML
+    private ImageView C9;
 
     @FXML
     private ImageView PausedGame;
@@ -90,19 +104,33 @@ public class Controller implements Initializable,Runnable, Serializable {
     private ImageView Bomb;
     @FXML
     private ImageView Pause;
+    @FXML
+    private ImageView end;
+    @FXML
+    private ImageView exit;
 
     @FXML
     private ImageView Uprock;
     @FXML
-    private ImageView Cloud;
+    private ImageView cloud1;
+    @FXML
+    private ImageView cloud2;
+    @FXML
+    private ImageView cloud3;
+    @FXML
+    private ImageView cloud4;
     @FXML
     private Text Taps;
     @FXML
     private ImageView GameBackground;
+
     @FXML
     private ImageView Orc;
     @FXML
     private ImageView Orc2;
+    @FXML
+    private ImageView Orc3;
+
     @FXML
     private Label CoinCount;
     @FXML
@@ -131,9 +159,12 @@ public class Controller implements Initializable,Runnable, Serializable {
     Coin c6 = new Coin();
     Coin c7 = new Coin();
     Coin c8 = new Coin();
+    Coin c9 = new Coin();
 
     Orcs o1 = new Orcs(0,0);
     Orcs o2 = new Orcs(0,0);
+    Orcs o3 = new Orcs(0,0);
+
 
 
     //Islands object generated
@@ -177,7 +208,7 @@ public class Controller implements Initializable,Runnable, Serializable {
         c6.setCoin(C6);
         c7.setCoin(C7);
         c8.setCoin(C8);
-
+        c9.setCoin(C9);
 
         c1.Add(CoinsList);
         c2.Add(CoinsList);
@@ -187,12 +218,14 @@ public class Controller implements Initializable,Runnable, Serializable {
         c6.Add(CoinsList);
         c7.Add(CoinsList);
         c8.Add(CoinsList);
-
+        c9.Add(CoinsList);
 
         o1.setOrc(Orc);
         o1.Add(OrcList);
         o2.setOrc(Orc2);
         o2.Add(OrcList);
+        o3.setOrc(Orc3);
+        o3.Add(OrcList);
 
 
         i1.setIsland(Island1);
@@ -288,27 +321,35 @@ public class Controller implements Initializable,Runnable, Serializable {
         @Override
         public void handle(long l) {
             double center = HeroChar.getBoundsInParent().getCenterX();
-            for(int i=0;i<CoinsList.size();i++) {
-                if (center >= CoinsList.get(i).getBoundsInParent().getCenterX()-1 && center <= CoinsList.get(i).getBoundsInParent().getCenterX()+1) {
-                    fadeOut(CoinsList.get(i),1.0).play();
+            Iterator it = CoinsList.iterator();
+            while(it.hasNext()){
+                ImageView target = (ImageView) it.next();
+                if (center >= target.getBoundsInParent().getCenterX()-1 && center <= target.getBoundsInParent().getCenterX()+1) {
+                    fadeOut(target,1.0).play();
                     try {
                         Player.getPlayer().addCoins(1);
-                    } catch (FileNotFoundException e) {
+                    }
+                    catch (FileNotFoundException e) {
                         e.printStackTrace();
-                    } catch (IOException e) {
+                    }
+                    catch (IOException e) {
                         e.printStackTrace();
                     }
                     try {
                         CoinCount.setText(String.valueOf(Player.getPlayer().getCoinsPossessed()));
-                    } catch (FileNotFoundException e) {
+                    }
+                    catch (FileNotFoundException e) {
                         e.printStackTrace();
-                    } catch (IOException e) {
+                    }
+                    catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
             }
         }
     };
+
+
     int count = 0;
     AnimationTimer AboveOrNot = new AnimationTimer() {
         @Override
@@ -323,6 +364,24 @@ public class Controller implements Initializable,Runnable, Serializable {
                         && !t2.isAlive() && centreY<=153.5625){
                     runTranslateTransition(HeroChar,0,750,1500).play();         //FALL HERO
 
+                    FadeTransition fader0 = new FadeTransition(Duration.millis(1200),txt);
+                    FadeTransition fader = new FadeTransition(Duration.millis(1200),rect);
+                    FadeTransition fader2 = new FadeTransition(Duration.millis(1200),respawn);
+                    FadeTransition fader3 = new FadeTransition(Duration.millis(1200),norespawn);
+
+                    fader0.setFromValue(0);
+                    fader0.setToValue(1);
+                    fader.setFromValue(0);
+                    fader.setToValue(1);
+                    fader2.setFromValue(0);
+                    fader2.setToValue(1);
+                    fader3.setFromValue(0);
+                    fader3.setToValue(1);
+                    fader0.play();
+                    fader.play();
+                    fader2.play();
+                    fader3.play();
+                    System.out.println("hello");
                 }
                 //FIXING BOUNCE
                 if(HeroChar.getBoundsInParent().intersects(Islands.get(i).getBoundsInParent())){
@@ -347,9 +406,9 @@ public class Controller implements Initializable,Runnable, Serializable {
 //                        }
                         if (centerX > Islands.get(j).getBoundsInParent().getMaxX() && centerX < Islands.get(j+1).getBoundsInParent().getMinX()
                                 && !t2.isAlive() && centerY <= 153.5625) {
-                            runTranslateTransition(OrcList.get(i), 0, 750, 1500).play();
-//                            fadeOut(OrcList.get(i),1500.0 ).play();
-//                            OrcList.get(i).setOpacity(0);
+                            runTranslateTransition(OrcList.get(i), 0, 750, 400).play();
+                            fadeOut(OrcList.get(i),200.0 ).play();
+                            OrcList.get(i).setOpacity(0);
                         }
 
                 }
@@ -390,12 +449,20 @@ public class Controller implements Initializable,Runnable, Serializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             runTranslateTransition(Island1,-220,0,2000).play();
             runTranslateTransition(Island2,-220,0,2000).play();
             runTranslateTransition(Chest,-220,0,2000).play();
             runTranslateTransition(OpenChest,-220,0,2000).play();
+
+            runTranslateTransition(cloud1,-220,0,2000).play();
+            runTranslateTransition(cloud2,-220,0,2000).play();
+            runTranslateTransition(cloud3,-220,0,2000).play();
+            runTranslateTransition(cloud4,-220,0,2000).play();
+
             runTranslateTransition(Orc,-220,0,2000).play();
             runTranslateTransition(Orc2,-220,0,2000).play();
+            runTranslateTransition(Orc3,-220,0,2000).play();
 
             runTranslateTransition(C1,-220,0,2000).play();
             runTranslateTransition(C2,-220,0,2000).play();
@@ -405,6 +472,7 @@ public class Controller implements Initializable,Runnable, Serializable {
             runTranslateTransition(C6,-220,0,2000).play();
             runTranslateTransition(C7,-220,0,2000).play();
             runTranslateTransition(C8,-220,0,2000).play();
+            runTranslateTransition(C9,-220,0,2000).play();
 
             runTranslateTransition(Island3,-220,0,2000).play();
             runTranslateTransition(Island4,-220,0,2000).play();
@@ -447,14 +515,30 @@ public class Controller implements Initializable,Runnable, Serializable {
         PausedGame.setOpacity(0);
         ResumeIcon.setOpacity(0);
     }
-    public void EndGame(MouseEvent mouseEvent) throws IOException {
+
+    public void Respawn() throws IOException {
+        if(Player.getPlayer().getCoinsPossessed()>1) {
+            FadeTransition fader = new FadeTransition(Duration.millis(100), rect);
+            FadeTransition fader2 = new FadeTransition(Duration.millis(100), respawn);
+            FadeTransition fader3 = new FadeTransition(Duration.millis(100), norespawn);
+            fader.setFromValue(1);
+            fader.setToValue(0);
+            fader2.setFromValue(1);
+            fader2.setToValue(0);
+            fader3.setFromValue(1);
+            fader3.setToValue(0);
+            fader.play();
+            fader2.play();
+            fader3.play();
+        }
+    }
+    public void NoRespawn(MouseEvent mouseEvent) throws IOException{
         this.s = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
         Parent root = (Parent) FXMLLoader.load(this.getClass().getResource("EndGame.fxml"));
         this.s.setTitle("EndGame Page");
-        this.s.setScene(new Scene(root, 500,300));
+        this.s.setScene(new Scene(root, 650,300));
         this.s.show();
     }
-
     @Override
     public void run() {
 
