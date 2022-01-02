@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
 
-public class CommonAnimation {
+public abstract class CommonAnimation {
     public static TranslateTransition runTranslateTransition(Node n, double x, double y, double duration) {
         TranslateTransition load = new TranslateTransition();
         load.setByX(x);
@@ -49,14 +49,14 @@ public class CommonAnimation {
         translate.play();
         return translate;
     }
-    public static void fadeOut(ImageView img){
-        FadeTransition fader = new FadeTransition(Duration.millis(1) , img);
+    public static FadeTransition fadeOut(ImageView img,Double time){
+        FadeTransition fader = new FadeTransition(Duration.millis(time) , img);
         fader.setFromValue(1);
         fader.setToValue(0);
-        fader.play();
+        return fader;
     }
-    public static FadeTransition fadeIn(ImageView img){
-        FadeTransition fader = new FadeTransition(Duration.millis(1) , img);
+    public static FadeTransition fadeIn(ImageView img,Double time){
+        FadeTransition fader = new FadeTransition(Duration.millis(time) , img);
         fader.setFromValue(0);
         fader.setToValue(1);
         return fader;

@@ -69,6 +69,13 @@ public class Controller implements Initializable,Runnable, Serializable {
     @FXML
     private ImageView C5;
     @FXML
+    private ImageView C6;
+    @FXML
+    private ImageView C7;
+    @FXML
+    private ImageView C8;
+
+    @FXML
     private ImageView PausedGame;
     @FXML
     private ImageView ResumeIcon;
@@ -95,6 +102,8 @@ public class Controller implements Initializable,Runnable, Serializable {
     @FXML
     private ImageView Orc;
     @FXML
+    private ImageView Orc2;
+    @FXML
     private Label CoinCount;
     @FXML
     private ImageView Chest;
@@ -119,8 +128,13 @@ public class Controller implements Initializable,Runnable, Serializable {
     Coin c3 = new Coin();
     Coin c4 = new Coin();
     Coin c5 = new Coin();
+    Coin c6 = new Coin();
+    Coin c7 = new Coin();
+    Coin c8 = new Coin();
 
     Orcs o1 = new Orcs(0,0);
+    Orcs o2 = new Orcs(0,0);
+
 
     //Islands object generated
     Islands i1 = new Islands(0,0);
@@ -143,13 +157,11 @@ public class Controller implements Initializable,Runnable, Serializable {
 
     //Opening/Intro transition
     private void introTransition(double out) {
-        //runTranslateTransition(Island1, 0, out* 200, 1500).play();
         runTranslateTransition(Title, 0, out * -150, 1500).play();
         //JumpHero(HeroChar,true);
         PathAnimateStraightNormal(HeroChar,60).play();
-        //PathAnimateStraightNormal(Orc,30).play();
-        //JumpHero(StaticKnife,true);
-        JumpOrc(Orc).play();
+        PathAnimateStraight(Orc).play();
+        PathAnimateStraight(Orc2).play();
         h.setHeroPhoto(HeroChar);
     }
 
@@ -162,15 +174,25 @@ public class Controller implements Initializable,Runnable, Serializable {
         c3.setCoin(C3);
         c4.setCoin(C4);
         c5.setCoin(C5);
+        c6.setCoin(C6);
+        c7.setCoin(C7);
+        c8.setCoin(C8);
+
 
         c1.Add(CoinsList);
         c2.Add(CoinsList);
         c3.Add(CoinsList);
         c4.Add(CoinsList);
         c5.Add(CoinsList);
+        c6.Add(CoinsList);
+        c7.Add(CoinsList);
+        c8.Add(CoinsList);
+
 
         o1.setOrc(Orc);
         o1.Add(OrcList);
+        o2.setOrc(Orc2);
+        o2.Add(OrcList);
 
 
         i1.setIsland(Island1);
@@ -182,7 +204,7 @@ public class Controller implements Initializable,Runnable, Serializable {
         i7.setIsland(Island7);
         i8.setIsland(Island8);
         i31.setIsland(Island31);
-        i41.setIsland(Island32);
+        i41.setIsland(Island41);
         i51.setIsland(Island51);
         i61.setIsland(Island61);
         i71.setIsland(Island71);
@@ -196,10 +218,10 @@ public class Controller implements Initializable,Runnable, Serializable {
         i7.Add(Islands);
         i8.Add(Islands);
         i31.Add(Islands);
-        //i41.Add(Islands);
-//        i51.Add(Islands);
-//        i61.Add(Islands);
-//        i71.Add(Islands);
+        i41.Add(Islands);
+        i51.Add(Islands);
+        i61.Add(Islands);
+        i71.Add(Islands);
         Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
             introTransition(-1);
         }));
@@ -207,6 +229,7 @@ public class Controller implements Initializable,Runnable, Serializable {
         CollisionOrc.start();
         CollisionChest.start();     //AnimationTimer for chest collision tracker
         AboveOrNot.start();         //AnimationTimer for Above Island checker
+        AboveOrNot_Orc.start();     //AnimationTimer for Above Island Orc checker
         CoinsCheck.start();         //AnimationTimer for Coin Collision tracker
 
     }
@@ -216,21 +239,18 @@ public class Controller implements Initializable,Runnable, Serializable {
         public void handle(long l){
             double MaxX = HeroChar.getBoundsInParent().getMaxX();
             double MinY = HeroChar.getBoundsInParent().getMaxY();
-            double StartCoord = Orc.getBoundsInParent().getMinX();
-            double EndCoord = Orc.getBoundsInParent().getMaxX();
-            //MinY<=OrcList.get(i).getBoundsInParent().getMinY()
             for(int i=0;i<OrcList.size();i++) {
-                if (MaxX >= OrcList.get(i).getBoundsInParent().getMinX() && MaxX<OrcList.get(i).getBoundsInParent().getMaxX()) {
+                 if (MaxX >= OrcList.get(i).getBoundsInParent().getMinX() && MaxX<OrcList.get(i).getBoundsInParent().getMaxX()) {
                     //OrcRight(OrcList.get(i),OrcList.get(i).getBoundsInParent().getCenterX(),OrcList.get(i).getBoundsInParent().getCenterY()).play();
-                    runTranslateTransition(Orc,200,0,100).play();
-                    for(int j=0;j<Islands.size();j++){
-                        if(OrcList.get(i).getBoundsInParent().getCenterX()>Islands.get(j).getBoundsInParent().getMaxX() && OrcList.get(i).getBoundsInParent().getCenterX()<Islands.get(j+1).getBoundsInParent().getMinX()){
-                            System.out.println("yes");
-                            runTranslateTransition(OrcList.get(i),0,100,800).play();
-                            FallOrc(OrcList.get(i));
-
-                        }
-                    }
+                    runTranslateTransition(OrcList.get(i), 20,0,1000).play();
+//                    for(int j=0;j<Islands.size();j++){
+//                        if(OrcList.get(i).getBoundsInParent().getCenterX()>Islands.get(j).getBoundsInParent().getMaxX() && OrcList.get(i).getBoundsInParent().getCenterX()<Islands.get(j+1).getBoundsInParent().getMinX()){
+//                            System.out.println("yes");
+//                            runTranslateTransition(OrcList.get(i),0,100,800).play();
+//                            FallOrc(OrcList.get(i));
+//
+//                        }
+//                    }
                 }
             }
         }
@@ -249,9 +269,9 @@ public class Controller implements Initializable,Runnable, Serializable {
 
 
             if(center>StartCoord && center<EndCoord){
-                fadeOut(Chest);
-                fadeIn(OpenChest);
-                StaticKnife.setOpacity(1);
+                fadeOut(Chest, 1.0).play();
+                fadeIn(OpenChest, 1.0).play();
+                //StaticKnife.setOpacity(1);
                 try {
                     Player.getPlayer().SetKnife();
                 } catch (FileNotFoundException e) {
@@ -270,7 +290,7 @@ public class Controller implements Initializable,Runnable, Serializable {
             double center = HeroChar.getBoundsInParent().getCenterX();
             for(int i=0;i<CoinsList.size();i++) {
                 if (center >= CoinsList.get(i).getBoundsInParent().getCenterX()-1 && center <= CoinsList.get(i).getBoundsInParent().getCenterX()+1) {
-                    fadeOut(CoinsList.get(i));
+                    fadeOut(CoinsList.get(i),1.0).play();
                     try {
                         Player.getPlayer().addCoins(1);
                     } catch (FileNotFoundException e) {
@@ -299,14 +319,10 @@ public class Controller implements Initializable,Runnable, Serializable {
             double maxY = HeroChar.getBoundsInParent().getMaxY();
             for(int i=0;i<Islands.size();i++){
                 //centreY<=165
-                //System.out.println(centreY);
-//                if(Islands.get(i+1).getBoundsInParent().intersects(Uprock.getBoundsInParent())){
-//                    System.out.println("Moved Island!");
-////                    Islands.get(i).setX(300);
-//                }
                 if(center>Islands.get(i).getBoundsInParent().getMaxX() && center<Islands.get(i+1).getBoundsInParent().getMinX()
                         && !t2.isAlive() && centreY<=153.5625){
-                    runTranslateTransition(HeroChar,0,750,1500).play();
+                    runTranslateTransition(HeroChar,0,750,1500).play();         //FALL HERO
+
                 }
                 //FIXING BOUNCE
                 if(HeroChar.getBoundsInParent().intersects(Islands.get(i).getBoundsInParent())){
@@ -318,7 +334,30 @@ public class Controller implements Initializable,Runnable, Serializable {
         }
     };
 
-    public void Move(MouseEvent mouseEvent) throws InterruptedException {
+    AnimationTimer AboveOrNot_Orc = new AnimationTimer() {
+        @Override
+        public void handle(long l) {
+            for(int i=0;i<OrcList.size();i++) {
+                for(int j=0;j<Islands.size();j++){
+                        double centerX = OrcList.get(i).getBoundsInParent().getCenterX();
+                        double centerY = OrcList.get(i).getBoundsInParent().getCenterY();
+                        //centerX>Islands.get(j).getBoundsInParent().getMinX() && centerX<Islands.get(j).getBoundsInParent().getMaxX();
+//                        if (OrcList.get(i).getBoundsInParent().intersects(Islands.get(j).getBoundsInParent())) {
+//                            PathAnimateStraight(OrcList.get(i)).play();
+//                        }
+                        if (centerX > Islands.get(j).getBoundsInParent().getMaxX() && centerX < Islands.get(j+1).getBoundsInParent().getMinX()
+                                && !t2.isAlive() && centerY <= 153.5625) {
+                            runTranslateTransition(OrcList.get(i), 0, 750, 1500).play();
+//                            fadeOut(OrcList.get(i),1500.0 ).play();
+//                            OrcList.get(i).setOpacity(0);
+                        }
+
+                }
+            }
+        }
+    };
+
+    public void Move(MouseEvent mouseEvent) throws InterruptedException, IOException {
         //Knife.setOpacity(0);
         PlayerTaps++;
         if(PlayerTaps==1){
@@ -326,6 +365,7 @@ public class Controller implements Initializable,Runnable, Serializable {
             runTranslateTransition(Title, 0, -150, 1500).play();
         }
         Taps.setText(String.valueOf(PlayerTaps));
+        Player.getPlayer().setHighscore(PlayerTaps);
 
         MoveHero(HeroChar);
 
@@ -355,11 +395,17 @@ public class Controller implements Initializable,Runnable, Serializable {
             runTranslateTransition(Chest,-220,0,2000).play();
             runTranslateTransition(OpenChest,-220,0,2000).play();
             runTranslateTransition(Orc,-220,0,2000).play();
+            runTranslateTransition(Orc2,-220,0,2000).play();
+
             runTranslateTransition(C1,-220,0,2000).play();
             runTranslateTransition(C2,-220,0,2000).play();
             runTranslateTransition(C3,-220,0,2000).play();
             runTranslateTransition(C4,-220,0,2000).play();
             runTranslateTransition(C5,-220,0,2000).play();
+            runTranslateTransition(C6,-220,0,2000).play();
+            runTranslateTransition(C7,-220,0,2000).play();
+            runTranslateTransition(C8,-220,0,2000).play();
+
             runTranslateTransition(Island3,-220,0,2000).play();
             runTranslateTransition(Island4,-220,0,2000).play();
             runTranslateTransition(Island5,-220,0,2000).play();
@@ -394,12 +440,19 @@ public class Controller implements Initializable,Runnable, Serializable {
         this.s.show();
     }
     public void Pause(MouseEvent mouseEvent) throws IOException{
-        PausedGame.setOpacity(1);
-        ResumeIcon.setOpacity(1);
+        fadeIn(PausedGame,100.0).play();
+        fadeIn(ResumeIcon,100.0).play();
     }
     public void Resume(MouseEvent mouseEvent) throws IOException{
         PausedGame.setOpacity(0);
         ResumeIcon.setOpacity(0);
+    }
+    public void EndGame(MouseEvent mouseEvent) throws IOException {
+        this.s = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        Parent root = (Parent) FXMLLoader.load(this.getClass().getResource("EndGame.fxml"));
+        this.s.setTitle("EndGame Page");
+        this.s.setScene(new Scene(root, 500,300));
+        this.s.show();
     }
 
     @Override

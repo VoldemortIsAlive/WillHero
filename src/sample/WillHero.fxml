@@ -124,17 +124,17 @@
             <Image url="@../Assets/ReIsle1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Island51" fitHeight="108.0" fitWidth="257.0" layoutX="3341.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Island51" fitHeight="108.0" fitWidth="257.0" layoutX="3400.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/ReIsle2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Island61" fitHeight="150.0" fitWidth="200.0" layoutX="3647.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Island61" fitHeight="150.0" fitWidth="200.0" layoutX="3800.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/ReIsle1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Island71" fitHeight="108.0" fitWidth="257.0" layoutX="3909.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Island71" fitHeight="108.0" fitWidth="257.0" layoutX="4100.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/ReIsle2.png" />
          </image>
@@ -144,7 +144,7 @@
             <Image url="@../Assets/ReIsle1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Orc" fitHeight="42.0" fitWidth="45.0" layoutX="1243.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Orc" fitHeight="30.0" fitWidth="30.0" layoutX="1256.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/Orc1.png" />
          </image>
@@ -167,6 +167,26 @@
       <ImageView fx:id="ResumeIcon" fitHeight="42.0" fitWidth="32.0" layoutX="350.0" layoutY="103.0" onMouseClicked="#Resume" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/ResumeIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="C6" fitHeight="24.0" fitWidth="16.0" layoutX="2300.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/Coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="C7" fitHeight="17.0" fitWidth="23.0" layoutX="2573.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/Coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="C8" fitHeight="24.0" fitWidth="16.0" layoutX="2606.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/Coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Orc2" fitHeight="36.0" fitWidth="35.0" layoutX="524.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/RedOrc1.png" />
          </image>
       </ImageView>
    </children>

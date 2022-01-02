@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="324.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EndGameController">
+   <children>
+      <ImageView fitHeight="407.0" fitWidth="799.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/GameBackground.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="259.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/GameOverImg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="41.0" fitWidth="200.0" layoutX="266.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/PlayAgainTxt.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Yes" fitHeight="50.0" fitWidth="75.0" layoutX="250.0" layoutY="226.0" onMouseClicked="#EndGame" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/YesButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="No" fitHeight="31.0" fitWidth="75.0" layoutX="407.0" layoutY="232.0" onMouseClicked="#SwitchBackToGame" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/NoButton.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
