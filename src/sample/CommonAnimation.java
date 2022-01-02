@@ -1,11 +1,9 @@
 package sample;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.*;
 import javafx.util.Duration;
 
 public class CommonAnimation {
@@ -24,12 +22,13 @@ public class CommonAnimation {
             translate.setNode(n);
             translate.setDuration(Duration.millis(850));
             translate.setCycleCount(TranslateTransition.INDEFINITE);
-            translate.setByY(38);
+            translate.setByY(40);
             translate.setAutoReverse(true);
             translate.play();
         }
         return translate;
     }
+
     public static TranslateTransition JumpOrc(Node n){
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(n);
@@ -61,6 +60,61 @@ public class CommonAnimation {
         fader.setFromValue(0);
         fader.setToValue(1);
         return fader;
+    }
+    public static PathTransition PathAnimateArc(ImageView img,double x,double y) {
+        Path path = new Path();
+        path.getElements().add(new MoveTo(0,0));
+        ArcTo arc = new ArcTo();
+        arc.setX(x+100);
+        arc.setY(-y-50);
+        arc.setRadiusX(50);
+        arc.setRadiusY(-20);
+        path.getElements().add(arc);
+        PathTransition transition = new PathTransition();
+        transition.setNode(img);
+        transition.setDuration((Duration.millis(1000)));
+        transition.setPath(path);
+        return transition;
+    }
+
+    public static PathTransition OrcRight(ImageView img,double x,double y){
+        Path path = new Path();
+        path.getElements().add(new MoveTo(x+10,y+10));
+        path.getElements().add(new HLineTo(x+40));
+        path.getElements().add(new VLineTo(y+30));
+        PathTransition transition = new PathTransition();
+        transition.setNode(img);
+        transition.setDuration((Duration.millis(250)));
+        transition.setPath(path);
+        return transition;
+    }
+
+    public static PathTransition PathAnimateStraightNormal(ImageView img,double y){
+        Path path = new Path();
+        path.getElements().add(new MoveTo(0,0));
+        path.getElements().add(new VLineTo(-y));
+        path.getElements().add(new VLineTo(y));
+        PathTransition transition = new PathTransition();
+        transition.setNode(img);
+        transition.setDuration((Duration.millis(1200)));
+        transition.setAutoReverse(true);
+        transition.setCycleCount(Animation.INDEFINITE);
+        transition.setPath(path);
+        return transition;
+    }
+
+    public static PathTransition PathAnimateStraight(ImageView img){
+        Path path = new Path();
+        path.getElements().add(new MoveTo(0,0));
+        path.getElements().add(new VLineTo(-30));
+        path.getElements().add(new VLineTo(30));
+        PathTransition transition = new PathTransition();
+        transition.setNode(img);
+        transition.setDuration((Duration.millis(1200)));
+        transition.setAutoReverse(true);
+        transition.setCycleCount(Animation.INDEFINITE);
+        transition.setPath(path);
+        return transition;
     }
 
     public static Timeline delay(double time)

@@ -4,20 +4,28 @@ import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+
 public class Orcs extends GameObjects {
     @FXML
-    private ImageView OrcPhoto;
+    private ImageView OrcDisplay;
 
     public Orcs(double X, double Y) {
         super(X, Y);
     }
 
     public void setOrcPhoto(ImageView orcPhoto) {
-        OrcPhoto = orcPhoto;
+        OrcDisplay = orcPhoto;
     }
 
     public ImageView getOrcPhoto() {
-        return OrcPhoto;
+        return OrcDisplay;
+    }
+    public void setOrc(ImageView orc) {
+        OrcDisplay = orc;
+    }
+    public void Add(ArrayList<ImageView> OrcList){
+        OrcList.add(OrcDisplay);
     }
 
 
