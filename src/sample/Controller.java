@@ -138,7 +138,7 @@ public class Controller implements Initializable,Runnable, Serializable {
     @FXML
     private ImageView OpenChest;
 
-    Hero h = new Hero(0,0);
+    static Hero h = new Hero(0,0);
     Thread t2;
     int PlayerTaps = Player.getPlayer().getTaps();
 
@@ -193,6 +193,7 @@ public class Controller implements Initializable,Runnable, Serializable {
         PathAnimateStraightNormal(HeroChar,60).play();
         PathAnimateStraight(Orc).play();
         PathAnimateStraight(Orc2).play();
+        PathAnimateStraight(Orc3).play();
         h.setHeroPhoto(HeroChar);
     }
 
